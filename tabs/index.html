@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/index.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="tabs">
+         <ul class="tabs-list">
+            <li class="tabs-item tabs-item-active" id="1">tab 1</li>
+            <li class="tabs-item" id="2">tab 2</li>
+            <li class="tabs-item" id="3">tab 3</li>
+            <li class="tabs-item" id="4">tab 4</li>
+            <li class="tabs-item" id="5">tab 5</li>
+         </ul>
+         <div class="tabs-wrapp">
+            <div class="tabs-content tabs-content-active" data-id="1">
+               content 1
+            </div>
+            <div class="tabs-content " data-id="2">
+               content 2
+            </div>
+            <div class="tabs-content " data-id="3">
+               content 3
+            </div>
+            <div class="tabs-content " data-id="4">
+               content 4
+            </div>
+            <div class="tabs-content" data-id="5">
+               content 5
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- <script>
+      const tabs = document.querySelectorAll('.tabs-item');
+      const tabsContents = document.querySelectorAll('.tabs-content');
+
+      function setActiveContent(index) {
+         // Удаляем класс активности со всех содержимых табов
+         tabsContents.forEach((item) => {
+            item.classList.remove('tabs-content-active');
+         });
+         // Добавляем класс активности для текущего таба
+         if (tabsContents[index]) {
+            tabsContents[index].classList.add('tabs-content-active');
+         }
+      }
+
+      tabs.forEach((tab, index) => {
+         tab.addEventListener('click', (e) => {
+            const curr = e.target;
+            // Если клик произошел по элементу внутри таба, то получаем родительский элемент
+            const clickedTab = curr.closest('.tabs-item');
+            if (clickedTab) {
+               // Удаляем класс активности со всех табов
+               tabs.forEach(tab => {
+                  tab.classList.remove('tabs-item-active');
+               });
+               // Добавляем класс активности для текущего таба
+               clickedTab.classList.add('tabs-item-active');
+               // Активируем соответствующее содержимое таба
+               setActiveContent(index);
+            }
+         });
+      });
+   </script> -->
+   <script>
+      // second variant, use toggle - (loop - 1), but added condition, for first loaded
+      const tabs = document.querySelectorAll('.tabs-item');
+      const tabsContents = document.querySelectorAll('.tabs-content');
+
+      // Функция для активации содержимого таба по индексу
+      function setActiveContent(index) {
+         // Удаляем класс активности со всех содержимых табов
+         tabsContents.forEach((item, i) => {
+            item.classList.toggle('tabs-content-active', i === index);
+         });
+      }
+
+      // Настройка обработчиков событий для всех табов
+      tabs.forEach((tab, index) => {
+         tab.addEventListener('click', (e) => {
+            const clickedTab = e.target.closest('.tabs-item');
+            if (clickedTab) {
+               // Удаляем класс активности со всех табов
+               tabs.forEach(tab => {
+                  tab.classList.toggle('tabs-item-active', tab === clickedTab);
+               });
+
+               // Активируем соответствующее содержимое таба
+               setActiveContent(index);
+            }
+         });
+      });
+
+      // По умолчанию активируем первый таб и его содержимое
+      if (tabs.length > 0 && tabsContents.length > 0) {
+         tabs[0].classList.add('tabs-item-active');
+         tabsContents[0].classList.add('tabs-content-active');
+      }
+   </script>
+</body>
+
+</html>

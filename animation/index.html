@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #0000ff;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+         }
+         
+    </style>
+</head>
+<body>
+    <div class="container">
+      
+      </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CustomEase.min.js"></script>
+    <script>
+        const container = document.querySelector('.container');
+
+        document.addEventListener('mousemove', (e) => {
+            const y = e.clientY / window.innerHeight * 100;
+            gsap.to(container, {
+                duration: 1,
+                y: -y,
+                ease: 'power2.out',
+                clipPath: `polygon(0 0, 100% 0, 100% ${100 - y}%, 0 ${100 - y}%)`
+            });
+        });
+    </script>
+</body>
+</html>

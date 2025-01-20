@@ -1,0 +1,77 @@
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+list-style:none;
+}
+html,body{
+width:100%;
+height:100%;
+font-family:sans-serif;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1030px;
+margin:20px auto;
+padding:0 15px;
+display: flex;
+justify-content: center;
+}
+.item {
+   height: 300px;
+   width: 50px;
+   display: grid;
+   place-content: center;
+   position: relative;
+   transition: all .3s ease-in;
+   -webkit-transition: all .3s ease-in;
+   -moz-transition: all .3s ease-in;
+   -ms-transition: all .3s ease-in;
+   -o-transition: all .3s ease-in;
+}
+.item:hover{
+   cursor: pointer;
+}
+.item p{
+   transform: rotate(90deg);
+   -webkit-transform: rotate(90deg);
+   -moz-transform: rotate(90deg);
+   -ms-transform: rotate(90deg);
+   -o-transform: rotate(90deg);
+   transform-origin: center;
+   transition: transform .3s ease-in;
+   -webkit-transition: transform .3s ease-in;
+   -moz-transition: transform .3s ease-in;
+   -ms-transition: transform .3s ease-in;
+   -o-transition: transform .3s ease-in;
+}
+.item.active{
+   flex: 1 auto;
+}
+.item.active p{
+   transform: rotate(0deg);
+   -webkit-transform: rotate(0deg);
+   -moz-transform: rotate(0deg);
+   -ms-transform: rotate(0deg);
+   -o-transform: rotate(0deg);
+}
+.blue {
+   background-color: blue;
+}
+.yellow {
+   background-color: yellow;
+}
+.green {
+   background-color: green;
+}
+.gray {
+   background-color: gray;
+}
+.silver {
+   background-color: silver;
+}

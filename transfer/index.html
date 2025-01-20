@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/index.css">
+   <title>Index</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="table">
+         <table align="center" border="1">
+            <thead>
+               <tr>
+                  <th>#</th>
+                  <th>key</th>
+                  <th>value</th>
+                  <th>action</th>
+               </tr>
+            </thead>
+            <tbody id="table-body">
+               <tr id="0">
+                  <td>1</td>
+                  <td>key 1</td>
+                  <td>value 1</td>
+                  <td>
+                     <button>Изменить</button>
+                  </td>
+               </tr>
+               <tr id="1">
+                  <td>2</td>
+                  <td>key 2</td>
+                  <td>value 2</td>
+                  <td>
+                     <button>Изменить</button>
+                  </td>
+               </tr>
+               <tr id="2">
+                  <td>3</td>
+                  <td>key 3</td>
+                  <td>value 3</td>
+                  <td>
+                     <button>Изменить</button>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+   <script>
+      const rows = document.querySelectorAll('tbody tr');
+
+      function getData(row) {
+         return [row.children[1].textContent, row.children[2].textContent];
+      }
+
+      rows.forEach(row => {
+         row.querySelector('button').addEventListener('click', e => {
+            const [key, value] = getData(row);
+            const rowId = row.id;
+            const hashData = `id=${encodeURIComponent(rowId)}&value1=${encodeURIComponent(key)}&value2=${encodeURIComponent(value)}`;
+            window.open(`page.html#${hashData}`, '_blank');
+         });
+      });
+
+      window.addEventListener('load', () => {
+         const hashParams = getHashParams();
+         if (hashParams.id && hashParams.value1 && hashParams.value2) {
+            const row = document.getElementById(hashParams.id);
+            if (row) {
+               row.children[1].textContent = hashParams.value1;
+               row.children[2].textContent = hashParams.value2;
+            }
+         }
+      });
+
+      function getHashParams() {
+         const params = {};
+         const hashString = window.location.hash.slice(1);
+         const pairs = hashString.split('&');
+         for (const pair of pairs) {
+            const [key, value] = pair.split('=');
+            params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+         }
+         return params;
+      }
+   </script>
+</body>
+
+</html>

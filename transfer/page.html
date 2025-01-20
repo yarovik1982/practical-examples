@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/index.css">
+   <title>Page</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="texareas">
+         <textarea id="left"></textarea>
+         <textarea id="right"></textarea>
+      </div>
+      <button id="saveButton">Сохранить</button>
+   </div>
+   <script>
+      function getHashParams() {
+         const params = {};
+         const hashString = window.location.hash.slice(1);
+         const pairs = hashString.split('&');
+         for (const pair of pairs) {
+            const [key, value] = pair.split('=');
+            params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+         }
+         return params;
+      }
+
+      const hashParams = getHashParams();
+      const textareas = document.querySelectorAll('textarea');
+
+      if (hashParams.value1 && hashParams.value2 && hashParams.id) {
+         textareas[0].value = hashParams.value1;
+         textareas[1].value = hashParams.value2;
+      }
+
+      document.getElementById('saveButton').addEventListener('click', () => {
+         const newValue1 = textareas[0].value;
+         const newValue2 = textareas[1].value;
+         const rowId = hashParams.id;
+
+         const newHashData = `id=${encodeURIComponent(rowId)}&value1=${encodeURIComponent(newValue1)}&value2=${encodeURIComponent(newValue2)}`;
+         window.location.href = `index.html#${newHashData}`;
+      });
+   </script>
+</body>
+
+</html>

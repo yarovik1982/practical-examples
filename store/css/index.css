@@ -1,0 +1,27 @@
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+
+}
+body{
+position: relative;
+overflow: hidden;
+min-height:100vh;
+font-family:sans-serif;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1470px;
+margin:0 auto;
+padding:0 15px;
+}
+.header{
+   padding: 8px 0;
+   background-color: teal;
+}
