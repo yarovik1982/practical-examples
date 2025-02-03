@@ -1,0 +1,26 @@
+#cart-link{
+   position: relative;
+}
+#cart-link::before{
+   position: absolute;
+   content:attr(data-cart-count);
+   width: 20px;
+   height: 20px;
+   border:1px solid #FFA628;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1rem;
+   color: #FFA628;
+   top:-10px;
+   left: 75%;
+   background-color: #2B3035;
+   border-radius: 50%;
+}
+header{
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   z-index: 2;
+}

@@ -1,0 +1,111 @@
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+   list-style: none;
+}
+
+body {
+   min-height: 100vh;
+   font-family: sans-serif;
+   color:#2f2f2f;
+   /* overflow: hidden; */
+}
+
+.none {
+   display: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+.container {
+   max-width: 1470px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+.header {
+   height: 70px;
+   width: 100%;
+   background-color: #333;
+   position: fixed;
+}
+.list {
+   display: flex;
+   width: 50%;
+   justify-content: space-between;
+}
+.list-item {
+}
+.header-container{
+   line-height: 70px;
+}
+.section {
+   height: 100vh;
+   padding-top: 70px;
+}
+.main {
+   display: flex;
+   width: 100%;
+   font-size: 0.75em;
+}
+p{
+   text-align: center;
+   margin-bottom: 10px;
+}
+.main-bar {
+   width: 300px;
+   height: calc(100vh - 70px);
+   background-color: #1f1f1f;
+   box-sizing: content-box;
+   border-right: 2px solid #ccc;
+   overflow-y: auto;
+   padding: 1rem;
+}
+
+
+.main-content {
+   flex:1 auto;
+   height: calc(100vh - 70px);
+   background-color: #1f1f1f;
+   overflow-y: auto;
+   padding: 1rem;
+}
+.custom-scrollbar {
+   scrollbar-width: none; /* Скрыть скроллбар в Firefox */
+   -ms-overflow-style: none; /* Скрыть скроллбар в IE */
+   transition: scrollbar-color 0.3s ease-in-out;
+   padding-right: 6px;
+}
+
+.custom-scrollbar:hover {
+   scrollbar-width: thin;
+   scrollbar-color: rgba(217, 241, 0, 0.5) transparent;
+   padding: 0;
+}
+
+/* Для WebKit (Chrome, Safari) */
+.custom-scrollbar::-webkit-scrollbar {
+   width: 6px;
+   opacity: 0;
+   transition: opacity 1s ease-in-out;
+   -webkit-transition: opacity 1s ease-in-out;
+   -moz-transition: opacity 1s ease-in-out;
+   -ms-transition: opacity 1s ease-in-out;
+   -o-transition: opacity 1s ease-in-out;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar {
+   opacity: 1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+   background: rgba(0, 0, 0, 0.5);
+   border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+   background: transparent;
+}

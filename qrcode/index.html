@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>QR Code Generator</title>
+   <!-- Подключаем qrcode через альтернативный CDN -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+</head>
+
+<body>
+   <button id="createQrCode">Создать QR-код</button>
+   <div id="qrCodeContainer" style="margin-top: 20px;width: 200px;height: 200px;"></div>
+
+   <script>
+      const btnCreateQrCode = document.getElementById('createQrCode');
+      const qrCodeContainer = document.getElementById('qrCodeContainer');
+
+      // Данные для перевода
+      const bankCode = '1001'; // Код банка (например, T-Bank)
+      const phoneNumber = '79785914732'; // Номер телефона получателя
+      const amount = 1000; // Сумма перевода (опционально)
+      const comment = 'Оплата за услуги'; // Комментарий (опционально)
+
+      // Формируем ссылку для перевода
+      const paymentUrl = `https://qr.nspk.ru/${bankCode}/${phoneNumber}?amount=${amount}&comment=${encodeURIComponent(comment)}`;
+
+      btnCreateQrCode.addEventListener('click', () => {
+         // Создаем QR-код
+         const qr = qrcode(0, 'M'); // Первый аргумент — размер, второй — уровень коррекции ошибок
+         qr.addData(paymentUrl);
+         qr.make();
+
+         // Очищаем контейнер перед отрисовкой нового QR-кода
+         qrCodeContainer.innerHTML = '';
+
+         // Рисуем QR-код в виде SVG
+         const qrSvg = qr.createSvgTag(0, 0); // Размер QR-кода 200x200 пикселей
+         qrCodeContainer.innerHTML = qrSvg;
+
+         console.log('QR-код успешно создан');
+      });
+   </script>
+</body>
+
+</html>

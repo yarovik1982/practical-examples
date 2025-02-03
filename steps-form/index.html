@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/index.css">
+   <!-- <script type="module" src="./js/index.js" defer></script> -->
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="forms">
+         <form class="form forms-item forms-item-active" id="step1" action="process.php" method="POST">
+            <input type="hidden" name="step" value="1">
+            <div class="form-row">Step 1</div>
+            <div class="form-row">
+               <label for="name">Name</label>
+               <input type="text" name="name" id="name" value="No Name">
+            </div>
+            <div class="form-row">
+               <label for="tel">Phpne number</label>
+               <input type="text" name="tel" id="tel">
+            </div>
+            <div class="form-row">
+               <button class="btn btn-step btn-prev" disabled>Prev</button>
+               <button class="btn btn-step btn-next" type="submit">Next</button>
+
+            </div>
+         </form>
+
+         <form class="form forms-item " id="step2" action="process.php" method="POST">
+            <input type="hidden" name="step" value="2">
+            <div class="form-row">Step 2</div>
+            <div class="form-row">
+               <label for="">Card Number</label>
+               <input type="text" name="cardNumber" id="cardNumber">
+            </div>
+            <div class="form-row">
+               <label for="">Card Termin</label>
+               <input type="text" name="cardTermin" id="cardTermin">
+            </div>
+            <div class="form-row">
+               <label for="">CVV</label>
+               <input type="text" name="cvv" minlength="3" maxlength="3">
+            </div>
+            <div class="form-row">
+               <button class="btn btn-step btn-prev" onclick="prevStep(1)">Prev</button>
+               <button class="btn btn-step btn-next">Next</button>
+
+            </div>
+         </form>
+         <form class="form forms-item " id="step3" action="process.php" method="POST">
+            <input type="hidden" name="step" value="3">
+            <div class="form-row">Step 3</div>
+            <div class="form-row">
+               <label for="">OTP</label>
+               <input type="text" name="otp">
+            </div>
+            <div class="form-row">
+               <button class="btn btn-step btn-prev" onclick="prevStep(2)">Prev</button>
+               <button class="btn btn-step btn-next" type="submit">Complete</button>
+
+            </div>
+         </form>
+      </div>
+   </div>
+   <script src="https://unpkg.com/imask"></script>
+   <script>
+      function setActiveForm(step) {
+         document.querySelectorAll('.form').forEach(form => form.classList.remove('forms-item-active'));
+         document.getElementById(`step${step}`).classList.add('forms-item-active');
+      }
+
+      function prevStep(step) {
+         event.preventDefault();
+         setActiveForm(step);
+         window.location.hash = `step${step}`;
+      }
+
+      // Начальная установка активной формы
+      window.addEventListener('load', () => {
+         const hash = window.location.hash;
+         if (hash.startsWith('#step')) {
+            const step = parseInt(hash.replace('#step', ''));
+            setActiveForm(step);
+         } else {
+            setActiveForm(1);
+         }
+      });
+
+      // Обработчик событий для кнопок "Далее" и "Назад"
+      document.querySelectorAll('.btn-next, .btn-prev').forEach(button => {
+         button.addEventListener('click', e => {
+            const step = parseInt(e.target.form.querySelector('[name="step"]').value);
+            if (e.target.classList.contains('btn-prev')) {
+               const prevStep = step - 1;
+               if (prevStep > 0) {
+                  setActiveForm(prevStep);
+                  window.location.hash = `step${prevStep}`;
+               }
+            }
+         });
+      });
+   </script>
+   <script>
+      const masks = [
+         { elementId: 'tel', mask: '+{7}(000)000-00-00' },
+         { elementId: 'cardNumber', mask: '0000 0000 0000 0000' },
+         { elementId: 'cardTermin', mask: '00{/}00' }
+      ];
+
+      masks.forEach(({ elementId, mask }) => {
+         const element = document.getElementById(elementId);
+         if (element) {
+            IMask(element, { mask });
+         }
+      });
+   </script>
+</body>
+
+</html>

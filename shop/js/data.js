@@ -1,7 +1,7 @@
 export const useData = () => {
    async function getProducts() {
       try {
-          const response = await fetch('https://fakestoreapi.com/products?limit=5');
+          const response = await fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=10');
           
           if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
@@ -19,6 +19,7 @@ export const useData = () => {
    getProducts().then(products => {
       if (products) {
           localStorage.setItem('products', JSON.stringify(products))
+          localStorage.setItem('cart-products', JSON.stringify([]))
           console.log('Продукты успешно загружены:', products);
       }
    });

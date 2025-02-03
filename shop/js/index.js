@@ -5,7 +5,7 @@ import { useCurrentPage } from "./currentPage.js";
 import { useCatalogPage } from "./catalogPage.js";
 
 const { getData, setData } = useStorage();
-const { renderCatalogProducts, renderAdminProducts } = useCatalogPage(getData('products'));
+const { renderCatalogProducts, renderAdminProducts, renderCartProducts } = useCatalogPage(getData('products'));
 
 async function initData() {
    const productStorage = getData("products");
@@ -25,6 +25,10 @@ async function initData() {
          renderCatalogProducts();
       }else if(page === 'admin'){
          renderAdminProducts()
+      }
+      else if(page === 'cart'){
+        const cartProducts = getData('cart-products')
+        renderCartProducts(cartProducts)
       }
     }
 }

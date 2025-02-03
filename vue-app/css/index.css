@@ -1,0 +1,162 @@
+body {
+   font-family: Arial, sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-color: #f0f0f0;
+   margin: 0;
+   overflow: hidden;
+   /* Чтобы скрыть прокрутку при открытом модальном окне */
+}
+
+.header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: #42b983;
+   padding: 10px 0;
+   text-align: center;
+}
+
+.header a {
+   color: white;
+   text-decoration: none;
+   margin: 0 15px;
+   font-size: 1.2em;
+   display: inline-block;
+}
+
+.header button {
+   background-color: #fff;
+   color: #42b983;
+   border: none;
+   padding: 10px 20px;
+   cursor: pointer;
+   border-radius: 4px;
+}
+
+.header button:hover {
+   background-color: #e6f7ef;
+}
+
+.container {
+   text-align: center;
+   background-color: white;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   margin-top: 60px;
+   /* Чтобы не перекрывать хедер */
+}
+
+button {
+   margin: 5px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   background-color: #42b983;
+   color: white;
+}
+
+button:hover {
+   background-color: #369f7c;
+}
+
+h1 {
+   font-size: 2em;
+}
+
+.modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+.modal-content {
+   background-color: white;
+   padding: 20px;
+   border-radius: 8px;
+   width: 300px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+   background-color: #ff4d4d;
+   color: white;
+   border: none;
+   padding: 10px;
+   border-radius: 4px;
+   cursor: pointer;
+   float: right;
+}
+
+.close-modal:hover {
+   background-color: #ff1a1a;
+}
+
+.form-group {
+   margin-bottom: 15px;
+}
+
+label {
+   display: block;
+   margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+   width: 100%;
+   padding: 8px;
+   box-sizing: border-box;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+}
+
+/* Стили для мобильного меню */
+.mobile-menu-button {
+   display: none;
+   background-color: #fff;
+   color: #42b983;
+   border: none;
+   padding: 10px 20px;
+   cursor: pointer;
+   border-radius: 4px;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+}
+
+.mobile-menu-button:hover {
+   background-color: #e6f7ef;
+}
+
+.nav-links {
+   display: flex;
+   justify-content: center;
+}
+
+@media (max-width: 768px) {
+   .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .mobile-menu-button {
+      display: block;
+   }
+
+   .nav-links.active {
+      display: flex;
+   }
+}

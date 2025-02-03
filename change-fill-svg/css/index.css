@@ -1,0 +1,102 @@
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+list-style:none;
+}
+html,body{
+width:100%;
+height:100%;
+font-family:sans-serif;
+}
+body::-webkit-scrollbar{
+   width: 10px;
+   background-color: blue;
+}
+body::-webkit-scrollbar-track{
+   background-color: yellow;
+}
+body::-webkit-scrollbar-thumb{
+   background-color: blue;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1470px;
+margin:0 auto;
+padding:0 15px;
+}
+.addToFavorite{
+   border: 0;
+   width: 16px;
+   height: 16px;
+   background-color: transparent;
+   cursor: pointer;
+}
+.addToFavorite label{
+   width: 100%;
+   height: 100%;
+}
+.addToFavorite label input{
+   width: 0;
+   height: 0;
+   position: absolute;
+   visibility: hidden;
+}
+input:checked ~ .bi-heart path:first-child{
+   display: block;
+}
+input:checked ~ .bi-heart path:last-child{
+   display: none;
+}
+input:not(:checked) ~ .bi-heart path:last-child{
+   display: block;
+}
+input:not(:checked) ~ .bi-heart path:first-child{
+   display: none;
+}
+/* .addToFavorite .bi-heart{
+   display: block;
+}
+.addToFavorite .bi-heart-fill{
+   display: none;
+}
+.addToFavorite.active .bi-heart{
+   display: none;
+}
+.addToFavorite.active .bi-heart-fill{
+   display: block;
+} */
+
+.bg {
+   position: relative;
+
+}
+.bg-clip {
+   height: 79vh
+   /* width: 50%; */
+
+}
+.bg-clip-left {
+   background-color: blue;
+}
+.bg-clip-right {
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 50%;
+   background-color: gold;
+   clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%, 9% 14%, 0% 17%, 8% 33%, 0% 34%, 12% 56%, 0% 58%, 15% 76%);
+   display: flex;
+}
+.bg-clip-absolute {
+   height: 100%;
+   width: calc(100% - 10px);
+   margin-left: 10px;
+   background-color: rgb(154, 75, 227);
+   clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%, 9% 14%, 0% 17%, 8% 33%, 0% 34%, 12% 56%, 0% 58%, 15% 76%);
+}

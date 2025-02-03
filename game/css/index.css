@@ -1,0 +1,103 @@
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+list-style:none;
+}
+body{
+background-color: #333;
+height:100vh;
+font-family:sans-serif;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1470px;
+height: 100vh;
+margin:0 auto;
+padding:30px 15px;
+}
+.game {
+   height: 100%;
+   width: 50vw;
+   margin: 0 auto;
+   border-radius: 20px;
+   background-color: #282828;
+   padding: 20px;
+   display: grid;
+   place-content: center;
+}
+.row {
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
+   padding: 20px 0;
+}
+.bottle {
+   width: 50px;
+   height: 150px;
+   border-left: 2px solid #ccc;
+   border-right: 2px solid #ccc;
+   border-bottom: 2px solid #ccc;
+   cursor: pointer;
+   transition: transform .3s ease-in;
+   -webkit-transition: transform .3s ease-in;
+   -moz-transition: transform .3s ease-in;
+   -ms-transition: transform .3s ease-in;
+   -o-transition: transform .3s ease-in;
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+   position: relative;
+}
+.bottle::before{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 10px;
+   border-radius: 50%;
+   border-top:2px solid rgba(204, 204, 204, .5);
+   border-bottom:2px solid rgba(204, 204, 204, 1);
+   content: '';
+   transform: translateY(-50%);
+   -webkit-transform: translateY(-50%);
+   -moz-transform: translateY(-50%);
+   -ms-transform: translateY(-50%);
+   -o-transform: translateY(-50%);
+}
+.bottle.active-bottle{
+   transform: translateY(-50px);
+   -webkit-transform: translateY(-50px);
+   -moz-transform: translateY(-50px);
+   -ms-transform: translateY(-50px);
+   -o-transform: translateY(-50px);
+}
+/* .bottle.animation {
+   transition: transform 0.5s ease-in-out, left 0.5s ease-in-out;
+   transform-origin: bottom center;
+   position: absolute;
+}
+@keyframes moveAndTilt {
+   0% {
+       transform: translateY(-50px) rotate(0deg);
+   }
+   50% {
+       transform: translate(50px, -30px) rotate(-20deg);
+   }
+   100% {
+       transform: translate(100px, -10px) rotate(-40deg);
+   }
+} */
+.liquid {
+   flex:0 20%;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+

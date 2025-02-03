@@ -1,0 +1,61 @@
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+list-style:none;
+}
+body{
+position: relative;
+min-height: 100vh;
+font-family:sans-serif;
+/* z-index: -1; */
+}
+body.unScroll{
+   padding-right: 15px;
+   overflow: hidden;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1470px;
+margin:0 auto;
+padding: 15px;
+overflow: hidden;
+/* display: flex; */
+}
+
+.parent {
+   width: fit-content;
+   position: relative;
+   z-index: 10;
+}
+.content {
+   position: absolute;
+   top: 0;
+   height: 100vh;
+   overflow-y: auto;
+   width: 300px;
+   left: -315px;
+   background-color: #ccc;
+   padding: 100px 20px;
+   transition: left .3s linear;
+   -webkit-transition: left .3s linear;
+   -moz-transition: left .3s linear;
+   -ms-transition: left .3s linear;
+   -o-transition: left .3s linear;
+}
+.content.isShow{
+   left: 0;
+}
+.bg {
+   width: 400px;
+   height: 400px;
+   background-image:linear-gradient(rgba(0,0,0,0.5), rgba(243, 252, 3, 0.5)), url(https://avavatar.ru/images/content/27/avavatar.ru-female_character-video_game-26052.webp);
+   background-size: cover;
+   margin: 20px auto;
+}
+

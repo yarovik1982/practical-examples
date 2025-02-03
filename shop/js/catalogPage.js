@@ -1,5 +1,7 @@
 import { useStorage } from "./storage.js";
+import { useCart } from "./useCart.js";
 
+const { addToCart } = useCart()
 const {getData, setData} = useStorage()
 
 export const useCatalogPage = (data) => {
@@ -16,8 +18,8 @@ export const useCatalogPage = (data) => {
                 `
             <div class="col">
                <div class="card h-100" style="display:flex; flex-direction:column; min-height:100px;">
-                  <div style="padding:20px; height:300px;display:flex;justify-content:center;">
-                     <img src="${item.image}" style="widts:100%;height:100%;object-fit:contain;"  alt="${item.title}">
+                  <div style="padding:20px;min-width:200px; height:300px;display:flex;justify-content:center; background:#ccc;">
+                     <img src="${item.category.image}" style="width:100%;height:100%;object-fit:contain;"  alt="${item.title}">
                   </div>
                   <div class="card-body" style="display:flex; flex-direction:column; min-height:100px;">
                      <h5 class="card-title" style="flex:1 auto;">${item.title}</h5>
@@ -29,12 +31,9 @@ export const useCatalogPage = (data) => {
                         ${item.description}
                      </p>
                      <p class="m-0 py-1">
-                        Категория: ${item.category}
+                        Категория: ${item.category.name}
                      </p>
-                     <p class=" py-0 m-0">
-                        <p class="m-0 py-1">Рейтинг: ${item.rating.rate}</p>
-                        <p class="m-0 py-1">Количество: ${item.rating.count}</p>
-                     </p>
+                     
                      <p class="card-text py-1">
                         $ ${item.price}
                      </p>
@@ -42,7 +41,7 @@ export const useCatalogPage = (data) => {
                   <div class="card-footer">
                      <div class="row justify-content-center">
                         <div class="col-6 text-center">
-                           <button class="btn btn-primary btn-sm">Купить</button>
+                           <button class="to-cart btn btn-primary btn-sm" id="${item.id}">Купить</button>
                         </div>
                      </div>
                   </div>
@@ -51,6 +50,8 @@ export const useCatalogPage = (data) => {
          `
             );
         });
+        const btns = document.querySelectorAll('.to-cart')
+        addToCart(btns)
     }
 
     function renderAdminProducts() {
@@ -78,23 +79,65 @@ export const useCatalogPage = (data) => {
                       </td>
                       <td data-id="image">
                           <img src="${
-                              item.image
+                              item.category.image
                           }" width='70' height='70' alt="${item.title}">
-                          <input type="text" readonly value="${item.image}">
+                          <input type="text" readonly value="${item.category.image}">
                       </td>
                       <td data-id="category">
-                          <input type="text" readonly value="${item.category}">
+                          <input type="text" readonly value="${item.category.name}">
                       </td>
-                      <td data-id="rate">
+                     
+                      <td data-id="price">
+                          <input type="text" readonly value="${item.price}">
+                      </td>
+                      <td data-id="actions">
+                          <button class="btn btn-success btn-sm edit-btn" title="edit">E</button>
+                          <button class="btn btn-danger btn-sm delete-btn" title="delete">D</button>
+                          <button class="btn btn-info btn-sm public-btn" title="public">S</button>
+                      </td>
+                  </tr>
+              
+          `
+            );
+        });
+        addEventListeners();
+    }
+    function renderCartProducts(cartData) {
+        const dataContainer = document.querySelector("#cart-products");
+        if (!dataContainer) {
+            console.error('Контейнер с id="adminProducts" не найден.');
+            return;
+        }
+        dataContainer.innerHTML = "";
+
+        cartData.forEach((item, index) => {
+            dataContainer.insertAdjacentHTML(
+                "beforeend",
+                `
+              
+                  <tr class="${index === 0 ? "table-active" : ""}">
+                      <th scope="row">${index + 1}</th>
+                      <td data-id="title">
+                          <input type="text" readonly value="${item.title}">
+                      </td>
+                      <td data-id="description">
                           <input type="text" readonly value="${
-                              item.rating.rate
+                              item.description
                           }">
                       </td>
-                      <td data-id="count">
-                          <input type="text" readonly value="${
-                              item.rating.count
-                          }">
+                      <td data-id="image">
+                          <img src="${
+                              item.category.image
+                          }" width='70' height='70' alt="${item.title}">
+                          <input type="text" readonly value="${item.category.image}">
                       </td>
+                      <td data-id="category">
+                          <input type="text" readonly value="${item.category.name}">
+                      </td>
+                      <td data-id="quantity">
+                          <input type="text" readonly value="${item.quantity}">
+                      </td>
+                     
                       <td data-id="price">
                           <input type="text" readonly value="${item.price}">
                       </td>
@@ -140,25 +183,6 @@ export const useCatalogPage = (data) => {
         });
     }
 
-   //  function handleDeleteClick(event) {
-   //      const form = event.target.closest("form");
-   //      const productIndex = Array.from(form.parentElement.children).indexOf(
-   //          form
-   //      );
-
-   //      // Добавляем метку isDelete:true в хранилище для данного товара
-   //      let products = getData("products") || [];
-   //      products[productIndex].isDelete = true;
-
-   //      // Обновляем хранилище
-   //      setData("products", products);
-
-   //      // Перерисовываем таблицу с отфильтрованными данными
-   //      const filteredProducts = products.filter(
-   //          (product) => !product.isDelete
-   //      );
-   //      renderAdminProducts(filteredProducts);
-   //  }
 
     function handlePublicClick(event) {
         const form = event.target.closest("form");
@@ -196,5 +220,6 @@ export const useCatalogPage = (data) => {
     return {
         renderCatalogProducts,
         renderAdminProducts,
+        renderCartProducts,
     };
 };
