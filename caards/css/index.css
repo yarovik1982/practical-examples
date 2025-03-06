@@ -1,0 +1,48 @@
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+list-style:none;
+}
+html,body{
+width:100%;
+height:100%;
+font-family:sans-serif;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1470px;
+margin:20px auto;
+padding:0 15px;
+}
+.cards {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   gap: 16px;
+}
+.cards-item {
+}
+.card {
+   min-width: 300px;
+   padding: 16px;
+   border:1px solid #000;
+   display: flex;
+   flex-direction: column;
+   min-height: 100px;
+}
+.card-header {
+}
+.card-body {
+   flex:1 auto;
+}
+.card-body p{
+   margin-bottom: 16px;
+}
+.card-footer {
+}

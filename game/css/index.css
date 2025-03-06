@@ -23,13 +23,15 @@ padding:30px 15px;
 }
 .game {
    height: 100%;
-   width: 50vw;
+   /* width: 95vw; */
    margin: 0 auto;
    border-radius: 20px;
    background-color: #282828;
    padding: 20px;
-   display: grid;
-   place-content: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   color: #ccc;
 }
 .row {
    display: flex;
@@ -38,21 +40,26 @@ padding:30px 15px;
    padding: 20px 0;
 }
 .bottle {
-   width: 50px;
-   height: 150px;
+   position: relative;
+   
    border-left: 2px solid #ccc;
    border-right: 2px solid #ccc;
    border-bottom: 2px solid #ccc;
    cursor: pointer;
-   transition: transform .3s ease-in;
-   -webkit-transition: transform .3s ease-in;
-   -moz-transition: transform .3s ease-in;
-   -ms-transition: transform .3s ease-in;
-   -o-transition: transform .3s ease-in;
+   top: 50%;
+   transition: all .3s ease-in;
+   -webkit-transition: all .3s ease-in;
+   -moz-transition: all .3s ease-in;
+   -ms-transition: all .3s ease-in;
+   -o-transition: all .3s ease-in;
    display: flex;
    flex-direction: column;
    justify-content: end;
-   position: relative;
+   transform: translateY(-50%);
+   -webkit-transform: translateY(-50%);
+   -moz-transform: translateY(-50%);
+   -ms-transform: translateY(-50%);
+   -o-transform: translateY(-50%);
 }
 .bottle::before{
    position: absolute;
@@ -71,6 +78,7 @@ padding:30px 15px;
    -o-transform: translateY(-50%);
 }
 .bottle.active-bottle{
+   top: calc(50% - 75px);
    transform: translateY(-50px);
    -webkit-transform: translateY(-50px);
    -moz-transform: translateY(-50px);
@@ -99,5 +107,12 @@ padding:30px 15px;
    display: flex;
    align-items: center;
    justify-content: center;
+}
+.btnStart{
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   border: 0;
+   background-color: #6cdb5b;
 }
 

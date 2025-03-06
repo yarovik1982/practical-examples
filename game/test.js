@@ -4,22 +4,20 @@ const state = {
         bottleHeight:150,
         spacing:15
     },
-    count:5
+    count:7
 }
 
-function createElements(n) {
+function createBottles(n) {
     const container = document.querySelector(".game");
     container.style.position = "relative";
     const rect = container.getBoundingClientRect()
     const containerWidth = rect.width
 
-    // document.body.appendChild(container);
-
     const elementWidth = 50;
     const elementHeight = 150;
-    const spacing = 16; // Расстояние между элементами
+    const spacing = 16; 
 
-    const totalWidth = n * elementWidth + (n - 1) * spacing; // Общая ширина всех элементов
+    const totalWidth = n * elementWidth + (n - 1) * spacing; 
     const startX = (containerWidth - totalWidth) / 2; // Начальная позиция (центрируем)
 
     for (let i = 0; i < n; i++) {
@@ -30,10 +28,10 @@ function createElements(n) {
         element.style.top = "50%";
         element.style.left = `${startX + i * (elementWidth + spacing)}px`;
         element.style.transform = "translateY(-50%)";
-        element.style.background = "blue"; // Цвет для наглядности
+        element.style.background = "blue";
         container.appendChild(element);
     }
 }
 
 // Создаем 5 элементов
-createElements(5);
+createBottles(state.count);

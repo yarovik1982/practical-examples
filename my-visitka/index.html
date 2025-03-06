@@ -4,83 +4,182 @@
 <head>
    <meta charset='UTF-8'>
    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+   <title>Курс по JavaScript - Тарифы и Оплата</title>
+   <meta name='description'
+      content='Выберите тариф для обучения JavaScript: базовый курс, доступ в чат, индивидуальные занятия с ментором. Оплатите онлайн!'>
+   <meta name='keywords' content='JavaScript, обучение, онлайн-курс, тарифы, программирование, оплата в рассрочку'>
+   <meta name='author' content='Правильный Курс'>
+
+   <!-- Open Graph для соцсетей -->
+   <meta property='og:title' content='Курс по JavaScript - Тарифы и Оплата'>
+   <meta property='og:description'
+      content='Выберите тариф для обучения JavaScript: базовый курс, доступ в чат, индивидуальные занятия с ментором. Оплатите онлайн!'>
+   <meta property='og:image' content='https://www.example.com/images/course-preview.jpg'>
+   <meta property='og:url' content='https://www.example.com'>
+   <meta property='og:type' content='website'>
+
+   <!-- Twitter Cards -->
+   <meta name='twitter:card' content='summary_large_image'>
+   <meta name='twitter:title' content='Курс по JavaScript - Тарифы и Оплата'>
+   <meta name='twitter:description'
+      content='Выберите тариф для обучения JavaScript: базовый курс, доступ в чат, индивидуальные занятия с ментором. Оплатите онлайн!'>
+   <meta name='twitter:image' content='https://www.example.com/images/course-preview.jpg'>
+
    <link rel='stylesheet' href='./css/index.css'>
-   <script src='./js/index.js' defer type="module"></script>
-   <title>Document</title>
+   <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+   <script src='./js/index.js' defer type='module'></script>
 </head>
 
+
 <body>
-   <header>
-      <div class="logo">Логотип</div>
-      <nav>
-         <a href="#">Главная</a>
-         <a href="#">Обо мне</a>
-         <a href="#">Мои работы</a>
-         <a href="#">Преимущества</a>
-         <a href="#">Контакты</a>
-      </nav>
-      <div class="burger">☰</div>
-   </header>
+   <div class="modal">
+      <div class="modal-dialog">
+         <form class="payform-tbank" name="payform-tbank" onsubmit="pay(this); return false;">
+            <input class="payform-tbank-row" type="hidden" name="terminalkey" value="1738581495637DEMO">
+            <input class="payform-tbank-row" type="hidden" name="frame" value="true">
+            <input class="payform-tbank-row" type="hidden" name="language" value="ru">
+            <input class="payform-tbank-row" type="text" placeholder="Сумма заказа" name="amount" required>
+            <input class="payform-tbank-row" type="hidden" placeholder="Номер заказа" name="order">
+            <input class="payform-tbank-row" type="text" placeholder="Описание заказа" name="description">
+            <input class="payform-tbank-row" type="text" placeholder="ФИО плательщика" name="name">
+            <input class="payform-tbank-row" type="email" placeholder="E-mail" name="email">
+            <input class="payform-tbank-row" type="tel" placeholder="Контактный телефон" name="phone">
+            <input class="payform-tbank-row payform-tbank-btn" type="submit" value="Оплатить">
 
-   <div class="container">
-      <div class="main-content">
-         <section class="about-me">
-            <img src="https://via.placeholder.com/400x400" alt="Фото">
-            <div class="bio">
-               <h2>Обо мне</h2>
-               <p>Здесь краткая биография и описание моей деятельности. Я занимаюсь разработкой сайтов и приложений.</p>
-               <button>Заказать</button>
-            </div>
-         </section>
+         </form>
 
-         <section class="gallery">
-            <h2>Мои работы</h2>
-            <img src="https://via.placeholder.com/400x400" alt="Работа 1">
-            <img src="https://via.placeholder.com/400x400" alt="Работа 2">
-            <img src="https://via.placeholder.com/400x400" alt="Работа 3">
-            <button>Заказать</button>
-         </section>
-
-         <section class="advantages">
-            <h2>Преимущества</h2>
-            <div class="card">
-               <h3>Быстро</h3>
-               <p>Я быстро выполняю заказы.</p>
-            </div>
-            <div class="card">
-               <h3>Качественно</h3>
-               <p>Я уделяю внимание деталям.</p>
-            </div>
-            <div class="card">
-               <h3>Профессионально</h3>
-               <p>Я работаю на высоком уровне.</p>
-            </div>
-            <button>Заказать</button>
-         </section>
       </div>
    </div>
 
-   <footer>
-      <div class="footer-logo">Логотип</div>
-      <nav>
-         <a href="#">Главная</a>
-         <a href="#">Обо мне</a>
-         <a href="#">Мои работы</a>
-         <a href="#">Преимущества</a>
-         <a href="#">Контакты</a>
-      </nav>
-      <div class="contacts">
-         <p>Email: example@example.com</p>
-         <p>Телефон: +7 123 456 78 90</p>
+   <!-- <div class="wrapper"> -->
+   <header class="header">
+      <div class="container header-container">
+         <div class="logo">Твой Курс - Курс Развития</div>
+         <nav >
+            <!-- <a href="#">Главная</a>
+            <a href="#">Обо мне</a>-->
+            <!-- <a href="#">Мои работы</a>  -->
+            <a role="button" class="show-modal show-modal-animation" data-id="news">Новости</a>
+            <a role="button" class="show-modal" data-id="policy">Конфиденциальность</a>
+            <a role="button" class="show-modal" data-id="contacts">Контакты</a>
+            <a role="button" class="show-modal" data-id="offert">Оферта</a>
+         </nav>
+         <div class="burger">☰</div>
+      </div>
+   </header>
+
+   <main class="main">
+      <div class="container">
+         <div class="main-content">
+            <div class="container">
+               <div class="card">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="https://www.svgrepo.com/show/33588/website-design.svg" alt="Design"
+                           class="card__icon">
+                        <h3>Старт</h3>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <p>Базовый видео-курс по java Script, состоящий из 15 видео-уроков</p>
+                        <a role="button" class="more-link" id="5000"
+                           data-description="Базовый видео-курс по java Script, состоящий из 15 видео-уроков">Оплатить
+                           5000 р</a>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="https://www.svgrepo.com/show/123516/code-interface-symbol-of-signs.svg" alt="Code">
+                        <h3>Взлёт</h3>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <p>Базовый видео-курс по java Script, состоящий из 15 видео-уроков + проверка домашних заданий и
+                           доступ в групповой чат</p>
+                        <a role="button" class="more-link" id="7000"
+                           data-description="Базовый видео-курс по java Script, состоящий из 15 видео-уроков + проверка домашних заданий и доступ в групповой чат">Оплатить
+                           7000 р</a>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2285/2285485.png" alt="Launch">
+                        <h3>Космос</h3>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <p>Базовый видео-курс по java Script, состоящий из 15 видео-уроков + проверка домашних заданий и
+                           доступ в групповой чат + индивидуальные занятия с ментором</p>
+                        <a role="button" class="more-link" id="10000"
+                           data-description="Базовый видео-курс по java Script, состоящий из 15 видео-уроков + проверка домашних заданий и доступ в групповой чат">
+                           Оплатить 10000 р
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <footer class="footer">
+      <div class="container footer-container">
+         <div class="footer-logo">© 2025 Все права защищены.</div>
+
+
       </div>
    </footer>
-   <ul class="list">
-      <li class="list__item"><a href="" class="list__link">Catetgory</a></li>
-      <li class="list__item"><a href="" class="list__link">Catetgory</a></li>
-      <li class="list__item"><a href="" class="list__link">Catetgory</a></li>
-      <li class="list__item"><a href="" class="list__link">Catetgory</a></li>
-      <li class="list__item"><a href="" class="list__link">Catetgory</a></li>
-   </ul>
 
+   <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+   <script type="text/javascript">
+      const TPF = document.querySelector(".payform-tbank");
+
+      TPF.addEventListener("submit", function (e) {
+         e.preventDefault();
+         const { description, amount, email, phone, receipt } = TPF;
+
+         if (receipt) {
+            if (!email.value && !phone.value)
+               return alert("Поле E-mail или Phone не должно быть пустым");
+
+            TPF.receipt.value = JSON.stringify({
+               "EmailCompany": "yar.oleg2018@yandex.ru",
+               "Taxation": "usn_income ",
+               "FfdVersion": "1.2",
+               "Items": [
+                  {
+                     "Name": description.value || "Оплата",
+                     "Price": Math.round(amount.value * 100),
+                     "Quantity": 1.00,
+                     "Amount": Math.round(amount.value * 100),
+                     "PaymentMethod": "full_prepayment",
+                     "PaymentObject": "intellectual_activity",
+                     "Tax": "none ",
+                     "MeasurementUnit": "pc"
+                  }
+               ]
+            });
+            document.querySelector('.modal').classList.remove('active')
+         }
+         pay(TPF);
+
+      })
+   </script>
+   <!-- <script>
+      const burger = document.querySelector('.burger')
+      const nav = document.querySelector('nav')
+      burger.addEventListener('click', () => {
+         nav.classList.toggle('nav-active')
+      })
+   </script> -->
 </body>
 <html />

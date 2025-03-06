@@ -1,0 +1,107 @@
+
+:root{
+   --step:50px;
+   --step-spacing:16px;
+}
+*{
+margin:0px;
+padding:0px;
+box-sizing:border-box;
+list-style:none;
+}
+body{
+background-color: #333;
+min-height:100vh;
+font-family:sans-serif;
+}
+.none{
+display:none;
+}
+a{
+text-decoration:none;
+}
+.container{
+max-width:1470px;
+margin:0 auto;
+padding:0 15px;
+}
+.bottle {
+   width: 50px;
+   height: 150px;
+   border-left: 1px solid #ccc;
+   border-right: 1px solid #ccc;
+   border-bottom: 1px solid rgb(204, 204, 204);
+   position: absolute;
+   cursor: pointer;
+   top: 50%;
+   transform: translate(-50%,-50%);
+   -webkit-transform: translate(-50%,-50%);
+   -moz-transform: translate(-50%,-50%);
+   -ms-transform: translate(-50%,-50%);
+   -o-transform: translate(-50%,-50%);
+   transition: all 2.5s linear;
+   -webkit-transition: all 2.5s linear;
+   -moz-transition: all 2.5s linear;
+   -ms-transition: all 2.5s linear;
+   -o-transition: all 2.5s linear;
+}
+.bottle::after{
+   position: absolute;
+   content: '';
+   top: 0;
+   left: 0;
+   transform: translateY(-50%);
+   width: 100%;
+   height: 10px;
+   border-radius: 50%;
+   border-top: 1 px solid rgba(204, 204, 204, .3);
+   border-bottom: 1 px solid rgba(204, 204, 204, 1);
+   -webkit-transform: translateY(-50%);
+   -moz-transform: translateY(-50%);
+   -ms-transform: translateY(-50%);
+   -o-transform: translateY(-50%);
+}
+.bottle-1{
+   left: calc(50% - ((var(--step) + var(--step-spacing))*2));
+}
+.bottle-2{
+   left: calc(50% - ((var(--step) + var(--step-spacing))));
+}
+.bottle-3{
+   left: 50%;
+}
+.bottle-4{
+   left: calc(50% + (var(--step) + var(--step-spacing)));
+}
+.bottle-5{
+   left: calc(50% + (var(--step) + var(--step-spacing))*2);
+}
+.bottle-wrap {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+}
+.liquid {
+   width: 200%;
+   transform: translateX(-50%);
+   -webkit-transform: translateX(-50%);
+   -moz-transform: translateX(-50%);
+   -ms-transform: translateX(-50%);
+   -o-transform: translateX(-50%);
+   flex:0 20%;
+}
+.liquid-blue {
+   background-color: blue;
+}
+.liquid-red {
+   background-color: red;
+}
+.liquid-yellow {
+   background-color: yellow;
+}
+.liquid-green {
+   background-color: green;
+}

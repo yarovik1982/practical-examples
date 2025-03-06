@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .diagonal {
+          background-color: gray; 
+      }
+  </style>
+</head>
+<body>
+  <script>
+      function promptForTableSize() {
+          const size = window.prompt("Введите размер таблицы");
+          const parsedSize = parseInt(size, 10);
+          if (isNaN(parsedSize) || parsedSize <= 0) {
+              alert("Ошибка. Некорректное значение!");
+          } else {
+              document.write("<center><table border='1px'>");
+              
+             
+              document.write("<tr><td style='width:40px'></td>"); 
+              for (var b = 1; b <= parsedSize; b++) {
+                  document.write("<td style='width:40px'><center><font size='4'>" + b + "</center></font></td>");
+              }
+              document.write("</tr>");
+
+              for (var a = 1; a <= parsedSize; a++) {
+                  document.write("<tr style='height:40px'>");
+                  document.write("<td style='width:40px'><center><font size='4'>" + a + "</center></font></td>"); // Номер строки
+                  for (var b = 1; b <= parsedSize; b++) {
+                      
+                      if (a === b) {
+                          document.write("<td class='diagonal' style='width:40px; background:grey;'><center><font size='4'>" + a + "X" + b + "=" + a * b + "</center></font></td>");
+                      } else {
+                          document.write("<td style='width:40px'><center><font size='4'>" + a + "X" + b + "=" + a * b + "</center></font></td>");
+                      }
+                  }
+                  document.write("</tr>");
+              }
+              document.write("</table></center>");
+          }
+      }
+
+      window.onload = promptForTableSize;
+  </script>
+</body>
+</html>

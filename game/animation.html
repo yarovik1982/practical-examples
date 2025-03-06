@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/index.css">
+   <link rel="stylesheet" href="./css/animation.css">
+   <script src="./animation.js" defer></script>
+   <title>Document</title>
+</head>
+<body>
+   <div class="container">
+      <div class="line">
+        <div class="wrap wrap-1">
+         <div class="element">
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+           </div>
+        </div>
+        <div class="wrap wrap-empty">
+         <div class="element">
+            <div class="element-color element-color-1"></div>
+         </div>
+        </div>
+        <div class="wrap wrap-2">
+         <div class="element">
+            <div class="element-color element-color-1"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+           </div>
+        </div>
+        <div class="wrap wrap-3">
+         <div class="element">
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+           </div>
+        </div>
+        <div class="wrap wrap-4">
+         <div class="element">
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+            <div class="element-color"></div>
+           </div>
+        </div>
+        
+      </div>
+   </div>
+   <script>
+      const element = document.querySelector('.element')
+      element.addEventListener('click', () => {
+         element.classList.toggle('animation')
+      })
+      
+   </script>
+</body>
+</html>
